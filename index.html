@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add(5)">Add</button>
+      <button @click.middle="reduceOne">Reduce</button>
+      <button @click="setZero">Clear</button>
+      <p>Result: {{ counter }}</p>
+      <label for="name">Enter name:</label>
+      <!-- short syntax is @input else use v-on:input -->
+      <input @input="setName($event, ' Koyun')" />
+      <div>
+        <label for="age">Enter age :</label>
+        <input v-model="age" />
+        <p>Your name is {{getFullName() }}</p>
+        <p>Your age is {{age}}</p>
+      </div>
+
+      <form @submit.prevent="submit">
+        <input type="text" />
+        <button>Submit</button>
+      </form>
+
+      <p>Total: {{totalPrice}}</p>
+
+      <div class="box">
+        <span
+          @click="addColor('1')"
+          :style="{ backgroundColor: isClicked1 ? 'red' : 'white' }"
+          >box 1</span
+        >
+        <span @click="addColor('2')" :class="{ clicked2 : isClicked2 }"
+          >box 2</span
+        >
+        <span @click="addColor('3')" :class="{ clicked3: isClicked3 }"
+          >box 3</span
+        >
+      </div>
+    </section>
+  </body>
+</html>
